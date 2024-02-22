@@ -1,8 +1,8 @@
 import './App.css';
-import SearchCountryContainer from './containers/SearchCountryContainer';
+import Root from './screens/root';
 
 function App() {
-  return <SearchCountryContainer />;
+  return <Root />;
 }
 
 export default App;

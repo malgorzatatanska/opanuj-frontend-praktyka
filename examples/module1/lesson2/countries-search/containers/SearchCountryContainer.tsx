@@ -47,7 +47,7 @@ const SearchCountryContainer = () => {
 
   return (
     <div>
-      <h1>Countries</h1>
+      <h1 className="mb-10">Countries</h1>
       <form className="space-x-4 flex items-end justify-center">
         <LanguageSelect
           setSortOption={setFilterLangOption}
