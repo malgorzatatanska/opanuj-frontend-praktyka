@@ -26,8 +26,6 @@ const SearchCountryContainer = () => {
   }, [allCountries]);
 
   const sortedCountries = useMemo(() => {
-    console.log('countries', countries.length);
-    console.log('sortType', sortType);
     if (sortType === 'Alfabetic') {
       return countries.sort((a, b) => {
         if (a.name.official < b.name.official) return -1;
