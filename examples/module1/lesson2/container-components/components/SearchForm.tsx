@@ -1,3 +1,6 @@
+import { GenderSelect } from './GenderSelect';
+import { GenderInput } from './GenerInput';
+
 type SearchFormProps = {
   name: string;
   setName: (name: string) => void;
@@ -18,28 +21,10 @@ function SearchForm({
   return (
     <form className="space-x-4 flex items-end justify-center">
       <label className="flex flex-col">
-        Name
-        <input
-          className="border h-7 mt-1 indent-2"
-          type="text"
-          placeholder="Rick Sanchez..."
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <GenderInput title="Name" name={name} setName={setName} />
       </label>
       <label className="flex flex-col">
-        Gender
-        <select
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-          className="border h-7 mt-1"
-        >
-          <option value="">Any Gender</option>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
-          <option value="genderless">Genderless</option>
-          <option value="unknown">Unknown</option>
-        </select>
+        <GenderSelect titile="Gender" gender={gender} setGender={setGender} />
       </label>
       <label className="flex flex-col">
         Sort by
