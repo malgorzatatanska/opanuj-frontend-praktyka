@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import { Book } from './shared/types';
+import { ListItem } from './components/ListItem';
+import { Form } from './components/Form';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [books, setBooks] = useState<Book[]>([]);
 
+  const handleAddNewBook = (book: Book) => {
+    setBooks([book, ...books]);
+  };
+
+  const handleRemoveBook = (book: Book) => {
+    setBooks(books.filter((b) => b.id !== book.id));
+  };
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex flex-col max-w-5xl mx-auto ">
+      <h1 className="text-2xl font-semibold leading-none tracking-tighter pl-10 bg-zinc-900 mt-20 pt-10 pb-10 text-white">
+        Books
+      </h1>
+      <div className="mt-10 mb-10">
+        <Form onAddNewBook={handleAddNewBook} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <ul className="mt-20 pl-10">
+        {books.map((book) => (
+          <ListItem book={book} key={book.id} deleteBook={handleRemoveBook} />
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default App
+export default App;
