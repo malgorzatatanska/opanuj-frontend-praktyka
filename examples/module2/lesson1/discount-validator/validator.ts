@@ -5,12 +5,20 @@ export function formValidator(
 ) {
   const errors: string[] = [];
 
-  if (!firstName) {
-    errors.push('First name is required');
+  if (!firstName || firstName.length <= 1) {
+    errors.push(
+      'First name is required and need to be at least 2 characters long'
+    );
   }
 
-  if (!lastName) {
-    errors.push('Last name is required');
+  if (!lastName || lastName.length <= 1) {
+    errors.push(
+      'Last name is required and need to be at least 2 characters long'
+    );
+  }
+
+  if (typeof age !== 'number') {
+    throw new Error('Age must be a number');
   }
 
   if (age < 0) {
